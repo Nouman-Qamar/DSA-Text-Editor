@@ -1,54 +1,55 @@
-export { Stack }
-
 class Stack {
     constructor() {
         this.size = 0;
-        this.Stack = [];
+        this.stack = [];
         this.buffer = 4;
     }
 
     clear() {
-        this.size = 0;  // size 0 matlab sare elements ko remove kry gye 
-        this.Stack = []; // Purani values hatany ky lye 
+        this.size = 0;
+        this.stack = [];
     }
 
     isEmpty() {
-        return (this.size === 0);
+        return this.size === 0;
     }
 
     top() {
-        return this.Stack[this.size - 1]; // return the top most value 
+        return this.stack[this.size - 1];
     }
 
-    condition() {
+    pop() {
         if (!this.isEmpty()) {
             this.size--;
-            return this.Stack[this.size]; // Return the new top element after decrement
-        } else {
-            return [-1, ''];
+            return this.stack.pop();
         }
+        return null;
     }
 
-    push(type, char) {
-        if (this.isEmpty()) {
-            if (type === 0) {
-                this.Stack.push([type, char]);
-            } else {
-                let tmp = this.top();
-                if (tmp[0] === type && tmp[1].length < this.buffer) {
-                    let top = this.condition();
-                    top[1] = char + top[1];
-                    this.Stack.push(top);
-                } else {
-                    this.Stack.push([type, char]);
-                }
-            }
-            this.size++; 
+    push(char) {
+        if (this.isEmpty() || this.top()[1].length >= this.buffer || this.top()[1][0] !== char) {
+            this.stack.push([0, char]);
+        } else {
+            this.top()[1] = char + this.top()[1];
         }
+        this.size = this.stack.length;
+    }
 
-        // Make sure to export the Stack class
+    getStack() {
+        return this.stack;
+    }
+
+    print() {
+        let output = '';
+        for (let i = this.size - 1; i >= 0; i--) {
+            output += `On stack ${this.stack[i][0]},${this.stack[i][1]}\n`;
+        }
+        output += 'Output';
+        return output;
+    }
+}
+
+// Make sure to export the Stack class
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = Stack;
-}
-    }
 }

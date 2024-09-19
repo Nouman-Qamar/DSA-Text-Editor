@@ -1,0 +1,153 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(135deg, #3a6186, #89253e); /* Gradient background */
+    color: #ECECEC; /* Light gray text */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    
+}
+
+.navbar {
+    background: rgba(255, 255, 255, 0.1); /* Slightly transparent */
+    color: #ffffff;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px); /* Glassmorphism effect */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.navbar-title {
+    flex: 1; 
+    text-align: center;
+    font-size: 1.75rem;
+    font-weight: bold;
+}
+
+.navbar-links a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+
+.navbar-links a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.content {
+    display: flex;
+    flex-grow: 1;
+    padding: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-area {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    max-width: 500px;
+    background: rgba(255, 255, 255, 0.15); /* Transparent glass-like */
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37); /* Neomorphism effect */
+    backdrop-filter: blur(15px); /* Glassmorphism blur */
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: #ECECEC;
+}
+
+label {
+    color: #FFFFFF; /* Pure white for titles */
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+textarea {
+    flex-grow: 1;
+    padding: 1rem;
+    font-size: 1.125rem;
+    resize: none;
+    border: none;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.25); /* Transparent with subtle blur */
+    color: #FFFFFF;
+    box-shadow: inset 2px 2px 8px rgba(0, 0, 0, 0.2),
+                inset -4px -4px 12px rgba(255, 255, 255, 0.1); /* Neomorphic effect */
+    outline: none;
+    min-height: 250px;
+}
+
+textarea::placeholder {
+    color: #B8B8B8;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    padding-top: 2rem;
+}
+
+button {
+    background: #ECECEC;
+    color: #333;
+    border: none;
+    padding: 0.75rem 2rem;
+    font-size: 1.25rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.3),
+                -8px -8px 16px rgba(255, 255, 255, 0.2); /* Neomorphic shadows */
+}
+
+button:hover {
+    background: #F0F0F0;
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.2),
+                -4px -4px 12px rgba(255, 255, 255, 0.1);
+}
+
+
+#output {
+    text-align: center; /* Centers the text */
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #FFFFFF;
+    background-color: rgba(12, 12, 14, 0.2); /* Blue background */
+    border: 2px solid #141419; /* Blue border */
+    box-shadow: inset 2px 2px 8px rgba(12, 12, 14, 0.3), 
+                inset -2px -2px 12px rgba(0, 0, 255, 0.2);
+    
+}
+
+
+#undo-button {
+    background-color: #505050; /* Medium gray undo button */
+    color: #FFFFFF;
+    box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.3),
+                inset -5px -5px 10px rgba(255, 255, 255, 0.1);
+}
+
+#reset-button {
+    background-color: #909090; /* Lighter gray reset button */
+    color: #000000;
+    box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.3),
+                inset -5px -5px 10px rgba(255, 255, 255, 0.1);
+}

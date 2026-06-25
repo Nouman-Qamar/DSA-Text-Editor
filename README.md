@@ -1,6 +1,6 @@
 # DSA Text Editor
 
-A text editor where every feature is a visible, working demonstration of a classic data structure or algorithm — not just a UI with DSA buried somewhere in the code. Built with vanilla HTML, CSS, and JavaScript, no frameworks.
+A text editor where every feature is a visible, working demonstration of a classic data structure or algorithm  not just a UI with DSA buried somewhere in the code. Built with vanilla HTML, CSS, and JavaScript, no frameworks.
 
 🔗 **Live Demo:** https://nouman-qamar.github.io/DSA-Text-Editor/
 

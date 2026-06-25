@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DSA Text Editor — Undo/Redo Stacks, KMP Search &amp; Word-Frequency Map</title>
+<meta name="description" content="A text editor where every feature visibly runs on a data structure: dual-stack undo/redo, KMP substring search, and a hashmap-based word-frequency analyzer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">&lt;/&gt;</span>
+    DSA Text Editor
+  </div>
+  <div class="topbar-actions">
+    <button id="undoBtn" class="tbtn" title="Undo (Ctrl+Z)" disabled>
+      ↶ Undo <kbd>Ctrl+Z</kbd>
+    </button>
+    <button id="redoBtn" class="tbtn" title="Redo (Ctrl+Y)" disabled>
+      ↷ Redo <kbd>Ctrl+Y</kbd>
+    </button>
+    <button id="resetBtn" class="tbtn tbtn-danger" title="Clear everything">
+      ✕ Reset
+    </button>
+  </div>
+</header>
+
+<main class="app">
+  <section class="editor-pane">
+    <div class="pane-label">EDITOR <span class="dim">— plain text, autosaved to history every pause</span></div>
+    <textarea id="editor" placeholder="Start typing... every few keystrokes get pushed onto the Undo Stack."></textarea>
+    <div class="statusbar" id="statusbar">
+      <span id="statWords">0 words</span>
+      <span id="statChars">0 chars</span>
+      <span id="statLines">1 line</span>
+      <span id="statReadTime">&lt;1 min read</span>
+    </div>
+  </section>
+
+  <aside class="side-pane">
+    <div class="tabs" role="tablist">
+      <button class="tab is-active" data-tab="stacks" role="tab">Undo / Redo</button>
+      <button class="tab" data-tab="search" role="tab">Find &amp; Replace</button>
+      <button class="tab" data-tab="freq" role="tab">Word Frequency</button>
+    </div>
+
+    <!-- STACKS VISUALIZER -->
+    <div class="tab-panel is-active" id="panel-stacks">
+      <p class="panel-note">Each pause in typing pushes a snapshot onto the <strong>Undo Stack</strong>. Undo pops it off and pushes the current state onto the <strong>Redo Stack</strong> — classic dual-stack editor history.</p>
+      <div class="stack-columns">
+        <div class="stack-col undo-col">
+          <h3 class="stack-title undo-title">Undo Stack <span id="undoCount">(0)</span></h3>
+          <div class="stack-visual" id="undoStackVisual"></div>
+        </div>
+        <div class="stack-col redo-col">
+          <h3 class="stack-title redo-title">Redo Stack <span id="redoCount">(0)</span></h3>
+          <div class="stack-visual" id="redoStackVisual"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FIND & REPLACE -->
+    <div class="tab-panel" id="panel-search">
+      <p class="panel-note">Matching runs on <strong>KMP substring search</strong> — O(n + m) instead of a naive O(n·m) scan.</p>
+      <label class="field">Find
+        <input type="text" id="findInput" placeholder="Search text...">
+      </label>
+      <label class="field">Replace with
+        <input type="text" id="replaceInput" placeholder="Replacement...">
+      </label>
+      <label class="checkbox-field">
+        <input type="checkbox" id="caseSensitive">
+        Case sensitive
+      </label>
+      <div class="btn-row">
+        <button id="findBtn" class="tbtn">Find Next</button>
+        <button id="replaceBtn" class="tbtn">Replace</button>
+        <button id="replaceAllBtn" class="tbtn">Replace All</button>
+      </div>
+      <p class="match-status" id="matchStatus">No search yet</p>
+    </div>
+
+    <!-- WORD FREQUENCY -->
+    <div class="tab-panel" id="panel-freq">
+      <p class="panel-note">Counted with a <strong>hashmap</strong> in a single O(n) pass, then sorted — top words shown below.</p>
+      <div class="freq-summary" id="freqSummary">0 words · 0 unique</div>
+      <div class="freq-list" id="freqList"></div>
+    </div>
+  </aside>
+</main>
+
+<footer class="site-footer">
+  <p>Built to show the data structures, not just the UI — Stack, KMP string matching, and Hash Map, all driving real editor features.</p>
+</footer>
+
+<script src="stack.js"></script>
+<script src="search.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
